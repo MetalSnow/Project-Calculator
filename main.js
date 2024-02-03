@@ -38,3 +38,18 @@ function operate() {
 operate();
 
 console.log(result);
+
+let displayDiv = document.querySelector(".display");
+let numBtn = document.querySelector(".numbers");
+
+let value = "";
+
+numBtn.addEventListener("click", (event) => {
+  let isButton = event.target.nodeName === "BUTTON";
+  if (!isButton) {
+    return;
+  } else {
+    value += event.target.textContent;
+  }
+  displayDiv.textContent = value;
+});
