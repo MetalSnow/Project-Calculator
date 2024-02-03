@@ -1,19 +1,40 @@
 function add(a, b) {
   return a + b;
 }
-console.log(add(2, 2));
-
 function subtract(a, b) {
   return a - b;
 }
-console.log(subtract(2, 2));
 
 function multiply(a, b) {
   return a * b;
 }
-console.log(multiply(2, 2));
 
 function divide(a, b) {
   return a / b;
 }
-console.log(divide(2, 2));
+
+//var
+let numOne = 1;
+let operator = "*";
+let numTwo = 1;
+
+let result;
+function operate() {
+  switch (operator) {
+    case "+":
+      result = add(numOne, numTwo);
+      break;
+    case "-":
+      result = subtract(numOne, numTwo);
+      break;
+    case "*":
+      result = multiply(numOne, numTwo);
+      break;
+    case "/":
+      result = divide(numOne, numTwo);
+      break;
+  }
+}
+operate();
+
+console.log(result);
