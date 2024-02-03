@@ -33,7 +33,6 @@ numBtn.addEventListener("click", (event) => {
     displayDiv.textContent += event.target.textContent;
     numOne = displayDiv.textContent;
   }
-  console.log(numTwo);
 });
 
 // Operator Section
@@ -65,23 +64,25 @@ operators.addEventListener("click", (event) => {
 });
 
 // Operate Section
-let result;
+let result = "";
 function operate() {
   switch (operator) {
     case " + ":
-      result = add(numOne, numTwo);
+      result = add(+numOne, +numTwo);
       break;
     case " – ":
-      result = subtract(numOne, numTwo);
+      result = subtract(+numOne, +numTwo);
       break;
     case " × ":
-      result = multiply(numOne, numTwo);
+      result = multiply(+numOne, +numTwo);
       break;
     case " ÷ ":
-      result = divide(numOne, numTwo);
+      result = divide(+numOne, +numTwo);
       break;
   }
+  return result;
 }
 equals.addEventListener("click", () => {
-  console.log(operate());
+  displayDiv.textContent = operate();
+  numOne = displayDiv.textContent;
 });
