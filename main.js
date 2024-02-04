@@ -110,6 +110,7 @@ division.addEventListener("click", () => {
     operator = "/";
   } else if (operator !== "/") {
     operate();
+
     displayDiv.textContent = result;
     operator = "/";
     numOne = result;
@@ -142,6 +143,10 @@ function operate() {
       result = divide(+numOne, +numTwo);
       break;
   }
+  result =
+    result.toString().length > 7
+      ? Math.floor(result * 10 ** 6) / 10 ** 6
+      : result;
   return result;
 }
 
