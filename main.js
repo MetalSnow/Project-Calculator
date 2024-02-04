@@ -35,12 +35,10 @@ numBtn.addEventListener("click", (event) => {
     displayDiv.textContent = numTwo;
     displayDiv.textContent += event.target.textContent;
     numTwo = displayDiv.textContent;
-    console.log("im num Two: ", numTwo);
   } else {
     displayDiv.textContent = numOne;
     displayDiv.textContent += event.target.textContent;
     numOne = displayDiv.textContent;
-    console.log("im num one: ", numOne);
   }
 });
 
@@ -81,8 +79,6 @@ subtraction.addEventListener("click", () => {
     numOne = result;
     numTwo = "";
   }
-  console.log(numOne);
-  console.log(numTwo);
 });
 
 multiplication.addEventListener("click", () => {
@@ -101,8 +97,6 @@ multiplication.addEventListener("click", () => {
     numOne = result;
     numTwo = "";
   }
-  console.log(numOne);
-  console.log(numTwo);
 });
 
 division.addEventListener("click", () => {
@@ -122,8 +116,6 @@ division.addEventListener("click", () => {
     numOne = result;
     numTwo = "";
   }
-  console.log(numOne);
-  console.log(numTwo);
 });
 
 // Operate Section
@@ -167,5 +159,4 @@ clear.addEventListener("click", () => {
   numTwo = "";
   operator = "";
   displayDiv.textContent = "0";
-  console.log("cleared");
 });
