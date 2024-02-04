@@ -63,6 +63,12 @@ operators.addEventListener("click", (event) => {
       operator = "/";
       break;
   }
+  operate();
+  displayDiv.textContent = result;
+  numOne = result;
+  numTwo = "";
+  console.log(numOne);
+  console.log(numTwo);
 });
 
 // Operate Section
@@ -88,6 +94,8 @@ function operate() {
 equals.addEventListener("click", () => {
   operate();
   displayDiv.textContent = result;
+  numOne = result;
+  numTwo = "";
 });
 
 clear.addEventListener("click", () => {
