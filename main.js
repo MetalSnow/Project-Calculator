@@ -13,16 +13,19 @@ function divide(a, b) {
   return a / b;
 }
 
-// Get buttons node
+// Get disply and buttons node
 let displayDiv = document.querySelector(".display");
 let numBtn = document.querySelector(".numbers");
-let operators = document.querySelector(".operators");
+let addition = document.querySelector("#add");
+let subtraction = document.querySelector("#subtract");
+let multiplication = document.querySelector("#multiply");
+let division = document.querySelector("#divide");
 let equals = document.querySelector("#equals");
 let clear = document.querySelector("#clear");
 
 // Numbers section
 let numOne = "";
-let numTwo = "1";
+let numTwo = "";
 
 numBtn.addEventListener("click", (event) => {
   let isButton = event.target.nodeName === "BUTTON";
@@ -43,37 +46,76 @@ numBtn.addEventListener("click", (event) => {
 
 // Operator Section
 let operator = "";
-let tempResult = "";
 
-operators.addEventListener("click", (event) => {
-  let id = event.target.id;
-  let isButton = event.target.nodeName === "BUTTON";
-  if (!isButton) {
-    return;
-  }
-
-  switch (id) {
-    case "add":
-      operator = "+";
-      break;
-    case "subtract":
-      operator = "-";
-      break;
-    case "multiply":
-      operator = "*";
-      break;
-    case "divide":
-      operator = "/";
-      break;
-  }
-
-  if ((operator == "+" || operator == "-") && numTwo == "1") {
+addition.addEventListener("click", () => {
+  if (operator == "") {
+    operator = "+";
+  } else if (operator !== "+") {
+    operate();
+    displayDiv.textContent = result;
+    operator = "+";
+    numOne = result;
     numTwo = "";
+  } else {
+    operator = "+";
     operate();
     displayDiv.textContent = result;
     numOne = result;
     numTwo = "";
+  }
+});
+
+subtraction.addEventListener("click", () => {
+  if (operator == "") {
+    operator = "-";
+  } else if (operator !== "-") {
+    operate();
+    displayDiv.textContent = result;
+    operator = "-";
+    numOne = result;
+    numTwo = "";
   } else {
+    operator = "-";
+    operate();
+    displayDiv.textContent = result;
+    numOne = result;
+    numTwo = "";
+  }
+  console.log(numOne);
+  console.log(numTwo);
+});
+
+multiplication.addEventListener("click", () => {
+  if (operator == "") {
+    operator = "*";
+  } else if (operator !== "*") {
+    operate();
+    displayDiv.textContent = result;
+    operator = "*";
+    numOne = result;
+    numTwo = "";
+  } else {
+    operator = "*";
+    operate();
+    displayDiv.textContent = result;
+    numOne = result;
+    numTwo = "";
+  }
+  console.log(numOne);
+  console.log(numTwo);
+});
+
+division.addEventListener("click", () => {
+  if (operator == "") {
+    operator = "/";
+  } else if (operator !== "/") {
+    operate();
+    displayDiv.textContent = result;
+    operator = "/";
+    numOne = result;
+    numTwo = "";
+  } else {
+    operator = "/";
     operate();
     displayDiv.textContent = result;
     numOne = result;
@@ -104,24 +146,10 @@ function operate() {
 }
 
 equals.addEventListener("click", () => {
-  if (operator == "*" || operator == "/") {
-    operate();
-    displayDiv.textContent = result;
-    numOne = result;
-    numTwo = "";
-  } else if ((operator == "+" || operator == "-") && numTwo == "1") {
-    numTwo = "";
-    operate();
-    displayDiv.textContent = result;
-    numOne = result;
-    numTwo = "";
-  } else {
-    operate();
-    displayDiv.textContent = result;
-    numOne = result;
-    numTwo = "";
-  }
-  operator = "";
+  operate();
+  displayDiv.textContent = result;
+  numOne = result;
+  numTwo = "";
 });
 
 clear.addEventListener("click", () => {
