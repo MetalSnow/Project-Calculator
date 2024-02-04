@@ -37,7 +37,7 @@ numBtn.addEventListener("click", (event) => {
     numTwo = displayDiv.textContent;
     console.log("im num Two: ", numTwo);
   } else {
-    // numOne = "";
+    displayDiv.textContent = numOne;
     displayDiv.textContent += event.target.textContent;
     numOne = displayDiv.textContent;
     console.log("im num one: ", numOne);
@@ -146,17 +146,21 @@ function operate() {
 }
 
 equals.addEventListener("click", () => {
-  operate();
-  displayDiv.textContent = result;
-  numOne = result;
-  numTwo = "";
-  operator = "";
+  if (operator == "") {
+    return;
+  } else {
+    operate();
+    displayDiv.textContent = result;
+    numOne = result;
+    numTwo = "";
+    operator = "";
+  }
 });
 
 clear.addEventListener("click", () => {
   numOne = "";
   numTwo = "";
   operator = "";
-  displayDiv.textContent = "";
+  displayDiv.textContent = "0";
   console.log("cleared");
 });
