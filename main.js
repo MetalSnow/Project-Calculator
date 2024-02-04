@@ -150,11 +150,12 @@ equals.addEventListener("click", () => {
   displayDiv.textContent = result;
   numOne = result;
   numTwo = "";
+  operator = "";
 });
 
 clear.addEventListener("click", () => {
   numOne = "";
-  numTwo = "1";
+  numTwo = "";
   operator = "";
   displayDiv.textContent = "";
   console.log("cleared");
