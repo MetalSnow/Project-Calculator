@@ -22,7 +22,7 @@ let clear = document.querySelector("#clear");
 
 // Numbers section
 let numOne = "";
-let numTwo = "";
+let numTwo = "1";
 
 numBtn.addEventListener("click", (event) => {
   let isButton = event.target.nodeName === "BUTTON";
@@ -34,6 +34,7 @@ numBtn.addEventListener("click", (event) => {
     numTwo = displayDiv.textContent;
     console.log("im num Two: ", numTwo);
   } else {
+    // numOne = "";
     displayDiv.textContent += event.target.textContent;
     numOne = displayDiv.textContent;
     console.log("im num one: ", numOne);
@@ -42,6 +43,8 @@ numBtn.addEventListener("click", (event) => {
 
 // Operator Section
 let operator = "";
+let tempResult = "";
+
 operators.addEventListener("click", (event) => {
   let id = event.target.id;
   let isButton = event.target.nodeName === "BUTTON";
@@ -63,10 +66,19 @@ operators.addEventListener("click", (event) => {
       operator = "/";
       break;
   }
-  operate();
-  displayDiv.textContent = result;
-  numOne = result;
-  numTwo = "";
+
+  if ((operator == "+" || operator == "-") && numTwo == "1") {
+    numTwo = "";
+    operate();
+    displayDiv.textContent = result;
+    numOne = result;
+    numTwo = "";
+  } else {
+    operate();
+    displayDiv.textContent = result;
+    numOne = result;
+    numTwo = "";
+  }
   console.log(numOne);
   console.log(numTwo);
 });
@@ -92,15 +104,29 @@ function operate() {
 }
 
 equals.addEventListener("click", () => {
-  operate();
-  displayDiv.textContent = result;
-  numOne = result;
-  numTwo = "";
+  if (operator == "*" || operator == "/") {
+    operate();
+    displayDiv.textContent = result;
+    numOne = result;
+    numTwo = "";
+  } else if ((operator == "+" || operator == "-") && numTwo == "1") {
+    numTwo = "";
+    operate();
+    displayDiv.textContent = result;
+    numOne = result;
+    numTwo = "";
+  } else {
+    operate();
+    displayDiv.textContent = result;
+    numOne = result;
+    numTwo = "";
+  }
+  operator = "";
 });
 
 clear.addEventListener("click", () => {
   numOne = "";
-  numTwo = "";
+  numTwo = "1";
   operator = "";
   displayDiv.textContent = "";
   console.log("cleared");
