@@ -13,8 +13,9 @@ function divide(a, b) {
   return a / b;
 }
 
-// Get disply and buttons node
-let displayDiv = document.querySelector(".display");
+// Get displays and buttons node
+let displayDiv = document.querySelector(".display-one");
+let displaySign = document.querySelector(".display-two");
 let numBtn = document.querySelector(".numbers");
 let addition = document.querySelector("#add");
 let subtraction = document.querySelector("#subtract");
@@ -61,6 +62,8 @@ addition.addEventListener("click", () => {
     numOne = result;
     numTwo = "";
   }
+  // Show Operator Content
+  displaySign.textContent = operator;
 });
 
 subtraction.addEventListener("click", () => {
@@ -79,6 +82,8 @@ subtraction.addEventListener("click", () => {
     numOne = result;
     numTwo = "";
   }
+  // Show Operator Content
+  displaySign.textContent = operator;
 });
 
 multiplication.addEventListener("click", () => {
@@ -97,6 +102,8 @@ multiplication.addEventListener("click", () => {
     numOne = result;
     numTwo = "";
   }
+  // Show Operator Content
+  displaySign.textContent = operator;
 });
 
 division.addEventListener("click", () => {
@@ -116,6 +123,8 @@ division.addEventListener("click", () => {
     numOne = result;
     numTwo = "";
   }
+  // Show Operator Content
+  displaySign.textContent = operator;
 });
 
 // Operate Section
@@ -156,6 +165,8 @@ equals.addEventListener("click", () => {
     numTwo = "";
     operator = "";
   }
+  // Show Operator Content
+  displaySign.textContent = "...";
 });
 
 clear.addEventListener("click", () => {
