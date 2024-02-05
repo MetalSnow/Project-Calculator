@@ -103,7 +103,7 @@ multiplication.addEventListener("click", () => {
     numTwo = "";
   }
   // Show Operator Content
-  displaySign.textContent = operator;
+  displaySign.textContent = "x";
 });
 
 division.addEventListener("click", () => {
@@ -124,7 +124,7 @@ division.addEventListener("click", () => {
     numTwo = "";
   }
   // Show Operator Content
-  displaySign.textContent = operator;
+  displaySign.textContent = "÷";
 });
 
 // Operate Section
