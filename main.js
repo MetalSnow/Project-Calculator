@@ -174,4 +174,6 @@ clear.addEventListener("click", () => {
   numTwo = "";
   operator = "";
   displayDiv.textContent = "0";
+  // Show Operator Content
+  displaySign.textContent = "...";
 });
