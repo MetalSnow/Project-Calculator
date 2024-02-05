@@ -16,7 +16,10 @@ function divide(a, b) {
 // Get displays and buttons node
 let displayDiv = document.querySelector(".display-one");
 let displaySign = document.querySelector(".display-two");
+
 let numBtn = document.querySelector(".numbers");
+let decimalButton = document.querySelector(".dot");
+
 let addition = document.querySelector("#add");
 let subtraction = document.querySelector("#subtract");
 let multiplication = document.querySelector("#multiply");
@@ -30,16 +33,32 @@ let numTwo = "";
 
 numBtn.addEventListener("click", (event) => {
   let isButton = event.target.nodeName === "BUTTON";
+  let isTarget = event.target.textContent;
+
   if (!isButton) {
     return;
   } else if (operator !== "") {
-    displayDiv.textContent = numTwo;
-    displayDiv.textContent += event.target.textContent;
-    numTwo = displayDiv.textContent;
+    if (isTarget === "." && !decimalButton.disabled) {
+      displayDiv.textContent = "0" + numTwo;
+      displayDiv.textContent += isTarget;
+      numTwo = displayDiv.textContent;
+      decimalButton.disabled = true;
+    } else if (isTarget !== ".") {
+      displayDiv.textContent = numTwo;
+      displayDiv.textContent += isTarget;
+      numTwo = displayDiv.textContent;
+    }
   } else {
-    displayDiv.textContent = numOne;
-    displayDiv.textContent += event.target.textContent;
-    numOne = displayDiv.textContent;
+    if (isTarget === "." && !decimalButton.disabled) {
+      displayDiv.textContent += numOne;
+      displayDiv.textContent += isTarget;
+      numOne = displayDiv.textContent;
+      decimalButton.disabled = true;
+    } else if (isTarget !== ".") {
+      displayDiv.textContent = numOne;
+      displayDiv.textContent += isTarget;
+      numOne = displayDiv.textContent;
+    }
   }
 });
 
@@ -64,6 +83,9 @@ addition.addEventListener("click", () => {
   }
   // Show Operator Content
   displaySign.textContent = operator;
+
+  // Enable decimal button
+  decimalButton.disabled = false;
 });
 
 subtraction.addEventListener("click", () => {
@@ -84,6 +106,8 @@ subtraction.addEventListener("click", () => {
   }
   // Show Operator Content
   displaySign.textContent = operator;
+  // Enable decimal button
+  decimalButton.disabled = false;
 });
 
 multiplication.addEventListener("click", () => {
@@ -104,6 +128,8 @@ multiplication.addEventListener("click", () => {
   }
   // Show Operator Content
   displaySign.textContent = "x";
+  // Enable decimal button
+  decimalButton.disabled = false;
 });
 
 division.addEventListener("click", () => {
@@ -125,6 +151,8 @@ division.addEventListener("click", () => {
   }
   // Show Operator Content
   displaySign.textContent = "÷";
+  // Enable decimal button
+  decimalButton.disabled = false;
 });
 
 // Operate Section
@@ -167,6 +195,8 @@ equals.addEventListener("click", () => {
   }
   // Show Operator Content
   displaySign.textContent = "...";
+  // Enable decimal button
+  decimalButton.disabled = false;
 });
 
 clear.addEventListener("click", () => {
@@ -176,4 +206,6 @@ clear.addEventListener("click", () => {
   displayDiv.textContent = "0";
   // Show Operator Content
   displaySign.textContent = "...";
+  // Enable decimal button
+  decimalButton.disabled = false;
 });
