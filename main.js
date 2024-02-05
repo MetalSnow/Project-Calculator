@@ -147,7 +147,11 @@ equals.addEventListener("click", () => {
     return;
   } else {
     operate();
-    displayDiv.textContent = result;
+    result =
+      result === Infinity || result === -Infinity
+        ? (displayDiv.textContent = "Syntax Error!")
+        : (displayDiv.textContent = result);
+
     numOne = result;
     numTwo = "";
     operator = "";
