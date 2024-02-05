@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: rgb(162, 141, 141);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: #271919;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  height: 490px;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 18px 15px;
+}
+
+.display {
+  font-size: 50px;
+  text-align-last: right;
+  background-color: #422b2b;
+  color: #f2d5da;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.operation {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  column-gap: 15px;
+  background-color: #271919;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Numbers */
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 9px;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.numbers > button {
+  text-align: center;
+  padding: 22px 28px;
+  font-size: 30px;
+  background-color: #322626;
+  color: #f2d5da;
+  border-radius: 50%;
+  border: none;
+}
+
+.numbers > button:hover {
+  transition: 0.2s;
+  background-color: #4a3939;
+}
+
+/* Operators */
+.operators {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dot {
+  width: 71px;
+}
+
+.operators > button {
+  width: 100px;
+  text-align: center;
+  padding: 10px 15px;
+  font-size: 27px;
+  color: #f2d5da;
+  border-radius: 20%;
+  border: none;
+  background-color: #5a3b3b;
+}
+
+.operators > button:hover {
+  transition: 0.2s;
+  background-color: #815454;
+}
+
+#clear {
+  background-color: #4a482f;
+}
+
+#clear:hover {
+  background-color: #7d7a52;
+}
+
+#equals {
+  background-color: #80390c;
+}
+
+#equals:hover {
+  background-color: #ab5017;
+}
+
+/* All Buttons */
+button {
+  cursor: pointer;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.operators > button:active,
+.numbers > button:active {
+  box-shadow: none;
+  opacity: 0.2;
+}
