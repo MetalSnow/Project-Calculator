@@ -45,7 +45,8 @@ numBtn.addEventListener("click", (event) => {
     return;
   } else if (operator !== "") {
     if (isTarget === "." && !decimalButton.disabled) {
-      displayDiv.textContent = "0" + numTwo;
+      displayDiv.textContent =
+        displayDiv.textContent == numOne ? "0" + numTwo : numTwo;
       displayDiv.textContent += isTarget;
       numTwo = displayDiv.textContent;
       decimalButton.disabled = true;
@@ -55,16 +56,31 @@ numBtn.addEventListener("click", (event) => {
       numTwo = displayDiv.textContent;
     }
   } else {
-    if (isTarget === "." && !decimalButton.disabled) {
+    // numOne statement
+    if (
+      isTarget === "." &&
+      !decimalButton.disabled &&
+      displayDiv.textContent === "0"
+    ) {
       displayDiv.textContent += numOne;
       displayDiv.textContent += isTarget;
       numOne = displayDiv.textContent;
       decimalButton.disabled = true;
-    } else if (isTarget !== ".") {
+    } else if (isTarget === "." && !decimalButton.disabled) {
+      displayDiv.textContent = numOne;
+      displayDiv.textContent += isTarget;
+      numOne = displayDiv.textContent;
+      decimalButton.disabled = true;
+    } else if (isTarget !== "." && isTarget !== "⌫") {
       displayDiv.textContent = numOne;
       displayDiv.textContent += isTarget;
       numOne = displayDiv.textContent;
     }
+    // } else if (isTarget === "⌫" && displayDiv.textContent.length == 1) {
+    //   displayDiv.textContent = "0";
+    // } else if (isTarget === "⌫") {
+    //   displayDiv.textContent = displayDiv.textContent.slice(0, -1);
+    // }
   }
   //Limit input length
   if (displayDiv.textContent.length > maxLength) {
