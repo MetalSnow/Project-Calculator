@@ -27,6 +27,12 @@ let division = document.querySelector("#divide");
 let equals = document.querySelector("#equals");
 let clear = document.querySelector("#clear");
 
+let maxLength = 10;
+//Limit input length
+if (displayDiv.textContent.length > maxLength) {
+  displayDiv.textContent = displayDiv.textContent.slice(0, maxLength);
+}
+
 // Numbers section
 let numOne = "";
 let numTwo = "";
@@ -59,6 +65,10 @@ numBtn.addEventListener("click", (event) => {
       displayDiv.textContent += isTarget;
       numOne = displayDiv.textContent;
     }
+  }
+  //Limit input length
+  if (displayDiv.textContent.length > maxLength) {
+    displayDiv.textContent = displayDiv.textContent.slice(0, maxLength);
   }
 });
 
@@ -197,6 +207,10 @@ equals.addEventListener("click", () => {
   displaySign.textContent = "...";
   // Enable decimal button
   decimalButton.disabled = false;
+  //Limit input length
+  if (displayDiv.textContent.length > maxLength) {
+    displayDiv.textContent = displayDiv.textContent.slice(0, maxLength);
+  }
 });
 
 clear.addEventListener("click", () => {
