@@ -40,16 +40,35 @@ numBtn.addEventListener("click", (event) => {
   if (!isButton) {
     return;
   } else if (operator !== "") {
-    if (isTarget === "." && !decimalButton.disabled) {
+    // numTwo statement
+    if (
+      isTarget === "." &&
+      !decimalButton.disabled &&
+      displayDiv.textContent === "0"
+    ) {
+      displayDiv.textContent += numTwo;
+      displayDiv.textContent += isTarget;
+      numOne = displayDiv.textContent;
+      decimalButton.disabled = true;
+    } else if (isTarget === "." && !decimalButton.disabled) {
       displayDiv.textContent =
         displayDiv.textContent == numOne ? "0" + numTwo : numTwo;
       displayDiv.textContent += isTarget;
       numTwo = displayDiv.textContent;
       decimalButton.disabled = true;
-    } else if (isTarget !== ".") {
+    } else if (isTarget !== "." && isTarget !== "⌫") {
       displayDiv.textContent = numTwo;
       displayDiv.textContent += isTarget;
       numTwo = displayDiv.textContent;
+    } else if (
+      isTarget === "⌫" &&
+      (displayDiv.textContent == numOne || displayDiv.textContent.length === 1)
+    ) {
+      displayDiv.textContent = "0";
+      numTwo = "";
+    } else if (isTarget === "⌫") {
+      displayDiv.textContent = displayDiv.textContent.slice(0, -1);
+      numTwo = numTwo.slice(0, -1);
     }
   } else {
     // numOne statement
@@ -71,12 +90,13 @@ numBtn.addEventListener("click", (event) => {
       displayDiv.textContent = numOne;
       displayDiv.textContent += isTarget;
       numOne = displayDiv.textContent;
+    } else if (isTarget === "⌫" && displayDiv.textContent.length === 1) {
+      displayDiv.textContent = "0";
+      numOne = "";
+    } else if (isTarget === "⌫") {
+      displayDiv.textContent = displayDiv.textContent.slice(0, -1);
+      numOne = numOne.slice(0, -1);
     }
-    // } else if (isTarget === "⌫" && displayDiv.textContent.length == 1) {
-    //   displayDiv.textContent = "0";
-    // } else if (isTarget === "⌫") {
-    //   displayDiv.textContent = displayDiv.textContent.slice(0, -1);
-    // }
   }
   //Limit input length
   if (displayDiv.textContent.length > maxLength) {
