@@ -28,10 +28,6 @@ let equals = document.querySelector("#equals");
 let clear = document.querySelector("#clear");
 
 let maxLength = 10;
-//Limit input length
-if (displayDiv.textContent.length > maxLength) {
-  displayDiv.textContent = displayDiv.textContent.slice(0, maxLength);
-}
 
 // Numbers section
 let numOne = "";
@@ -198,10 +194,10 @@ function operate() {
       result = divide(+numOne, +numTwo);
       break;
   }
-  result =
-    result.toString().length > 7
-      ? Math.floor(result * 10 ** 6) / 10 ** 6
-      : result;
+  //Limit input length
+  if (result.toString().length > maxLength) {
+    result = result.toString().slice(0, maxLength);
+  }
   return result;
 }
 
@@ -223,10 +219,6 @@ equals.addEventListener("click", () => {
   displaySign.textContent = "...";
   // Enable decimal button
   decimalButton.disabled = false;
-  //Limit input length
-  if (displayDiv.textContent.length > maxLength) {
-    displayDiv.textContent = displayDiv.textContent.slice(0, maxLength);
-  }
 });
 
 clear.addEventListener("click", () => {
